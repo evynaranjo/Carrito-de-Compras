@@ -1,9 +1,7 @@
 const request = require("supertest");
 const jwt = require("jsonwebtoken");
 
-// ======================================================
-// MOCKS
-// ======================================================
+//--------------- MOCKS -----------------
 
 jest.mock("../../src/models/User", () => ({
   findById: jest.fn(),
@@ -47,16 +45,11 @@ describe("Pruebas de integración - API del carrito", () => {
   beforeEach(() => {
     jest.clearAllMocks();
 
-    // Evita que un token inválido intente conectarse realmente
-    // con los servidores de Google.
     axios.get.mockRejectedValue(
       new Error("Token OAuth inválido")
     );
   });
 
-  // ======================================================
-  // FUNCIONES AUXILIARES
-  // ======================================================
 
   function generateToken() {
     return jwt.sign(
@@ -77,10 +70,7 @@ describe("Pruebas de integración - API del carrito", () => {
     });
   }
 
-  // ======================================================
-  // PRUEBA 1
-  // PETICIÓN SIN TOKEN
-  // ======================================================
+  // PRUEBA 1 - PETICIÓN SIN TOKEN
 
   test("GET /api/carrito debe responder 401 si no se envía token", async () => {
     const response = await request(app)
@@ -94,10 +84,7 @@ describe("Pruebas de integración - API del carrito", () => {
     });
   });
 
-  // ======================================================
-  // PRUEBA 2
-  // TOKEN INVÁLIDO
-  // ======================================================
+ // PRUEBA 2 - TOKEN INVÁLIDO
 
   test("GET /api/carrito debe responder 401 con token inválido", async () => {
     const response = await request(app)
@@ -115,10 +102,8 @@ describe("Pruebas de integración - API del carrito", () => {
     });
   });
 
-  // ======================================================
-  // PRUEBA 3
-  // JWT CORRECTO
-  // ======================================================
+
+  // PRUEBA 3 - PETICIÓN CON JWT VÁLIDO
 
   test("GET /api/carrito debe permitir acceso con un JWT válido", async () => {
     mockAuthenticatedUser();
@@ -149,12 +134,9 @@ describe("Pruebas de integración - API del carrito", () => {
     expect(response.body.cart.items).toHaveLength(0);
   });
 
-  // ======================================================
-  // PRUEBA 4
-  // CANTIDAD NEGATIVA
-  // ======================================================
 
-  test("POST /api/carrito/add debe responder 400 con cantidad negativa", async () => {
+  // PRUEBA 4 - CANTIDAD NEGATIVA
+    test("POST /api/carrito/add debe responder 400 con cantidad negativa", async () => {
     mockAuthenticatedUser();
 
     const token = generateToken();
@@ -183,11 +165,7 @@ describe("Pruebas de integración - API del carrito", () => {
     expect(Product.findById).not.toHaveBeenCalled();
   });
 
-  // ======================================================
-  // PRUEBA 5
-  // PRODUCTO NO ENCONTRADO
-  // ======================================================
-
+  // PRUEBA 5 - PRODUCTO NO ENCONTRADO
   test("POST /api/carrito/add debe responder 404 si el producto no existe", async () => {
     mockAuthenticatedUser();
 
@@ -217,11 +195,8 @@ describe("Pruebas de integración - API del carrito", () => {
     });
   });
 
-  // ======================================================
-  // PRUEBA 6
-  // STOCK INSUFICIENTE
-  // ======================================================
-
+  
+  // PRUEBA 6 - STOCK INSUFICIENTE
   test("POST /api/carrito/add debe responder 409 si no existe stock suficiente", async () => {
     mockAuthenticatedUser();
 
@@ -264,11 +239,7 @@ describe("Pruebas de integración - API del carrito", () => {
     });
   });
 
-  // ======================================================
-  // PRUEBA 7
-  // AGREGAR PRODUCTO CORRECTAMENTE
-  // ======================================================
-
+  // PRUEBA 7 - AGREGAR PRODUCTO CORRECTAMENTE
   test("POST /api/carrito/add debe agregar correctamente un producto", async () => {
     mockAuthenticatedUser();
 
@@ -316,11 +287,8 @@ describe("Pruebas de integración - API del carrito", () => {
     expect(response.body.cart.items[0].cantidad).toBe(2);
   });
 
-  // ======================================================
-  // PRUEBA 8
-  // ACTUALIZAR A CANTIDAD NEGATIVA
-  // ======================================================
 
+  // PRUEBA 8 - ACTUALIZAR A CANTIDAD NEGATIVA 
   test("PUT /api/carrito/update/:productId debe responder 400 con cantidad negativa", async () => {
     mockAuthenticatedUser();
 
@@ -344,10 +312,8 @@ describe("Pruebas de integración - API del carrito", () => {
     });
   });
 
-  // ======================================================
-  // PRUEBA 9
-  // CANTIDAD 0 ELIMINA EL PRODUCTO
-  // ======================================================
+
+  // PRUEBA 9 - Si la cantidad es 0, eliminar el producto del carrito
 
   test("PUT /api/carrito/update/:productId debe eliminar el producto cuando cantidad es 0", async () => {
     mockAuthenticatedUser();
@@ -392,11 +358,7 @@ describe("Pruebas de integración - API del carrito", () => {
     expect(response.body.cart.total).toBe(0);
   });
 
-  // ======================================================
-  // PRUEBA 10
-  // VACIAR CARRITO
-  // ======================================================
-
+  // PRUEBA 10 - VACIAR EL CARRITO
   test("DELETE /api/carrito/clear debe vaciar correctamente el carrito", async () => {
     mockAuthenticatedUser();
 
