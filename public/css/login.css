@@ -1,0 +1,207 @@
+.pagina-cuenta {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 2.5rem;
+  background: #aaa198;
+}
+
+.caja-cuenta {
+  width: min(1050px, 100%);
+  display: grid;
+  grid-template-columns: 1.03fr .97fr;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.28);
+  border-radius: 3px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .42);
+}
+
+.bienvenida {
+  min-height: 650px;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: clamp(2rem, 6vw, 4.6rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #f5f7fa;
+  background: #ded0bf;
+}
+
+.bienvenida::before {
+  content: '';
+  position: absolute;
+  z-index: -2;
+  width: 72%;
+  height: 38%;
+  left: 0;
+  bottom: 0;
+  background: #cdb192;
+}
+
+.bienvenida::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: 170px;
+  height: 170px;
+  right: 8%;
+  top: 12%;
+  border: 1px solid rgba(82,111,98,.34);
+  border-radius: 50%;
+}
+
+.bienvenida h1 {
+  max-width: 590px;
+  margin-bottom: 1.2rem;
+  color: #17241f;
+}
+
+.bienvenida p {
+  max-width: 480px;
+  color: #625d56;
+  line-height: 1.75;
+}
+
+.formulario {
+  padding: clamp(2rem, 5vw, 4rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #f7f4ee;
+}
+
+.formulario h2 {
+  margin-bottom: .35rem;
+}
+
+.separador {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  margin: 1.2rem 0;
+  color: #a8b3c1;
+  font-size: .76rem;
+}
+
+.separador::before,
+.separador::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #31465b;
+}
+
+.token {
+  margin-top: 1.2rem;
+  padding: 1rem;
+  border: 1px solid #31465b;
+  border-radius: 2px;
+  background: #efeae2;
+}
+
+.titulo-token {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: .7rem;
+}
+
+.boton-copiar {
+  border: 0;
+  color: #75b022;
+  background: transparent;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.token textarea {
+  min-height: 90px;
+  background: #fbfaf7;
+  font-family: Consolas, monospace;
+  font-size: .75rem;
+}
+
+.token .btn {
+  width: 100%;
+  margin-top: .7rem;
+}
+
+.token-manual {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #31465b;
+}
+
+.token-manual summary {
+  color: #75b022;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.pie {
+  margin: 1.3rem 0 0;
+  color: #a8b3c1;
+  text-align: center;
+  font-size: .84rem;
+}
+
+
+.pagina-cuenta {
+  background:
+    linear-gradient(90deg, rgba(14, 22, 32, .96), rgba(14, 22, 32, .68)),
+    url('/images/thewitcher.png') center / cover fixed;
+}
+
+.caja-cuenta {
+  border: 0;
+  border-radius: 0;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .42);
+}
+
+.bienvenida {
+  color: #fff;
+  background: linear-gradient(145deg, rgba(27, 40, 56, .98), rgba(32, 49, 66, .9));
+}
+
+.bienvenida::before,
+.bienvenida::after {
+  display: none;
+}
+
+.bienvenida h1 {
+  color: #fff;
+}
+
+.bienvenida p {
+  color: #c7d5e0;
+}
+
+.formulario {
+  color: #f5f7fa;
+  background: #171f2a;
+}
+
+.token {
+  color: #fff;
+  background: #101822;
+  border-color: #33485c;
+}
+
+.token textarea {
+  background: #101822;
+}
+
+.separador::before,
+.separador::after,
+.token-manual {
+  border-color: #304255;
+}
+
+.token-manual summary,
+.boton-copiar {
+  color: #66c0f4;
+}
+

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tienda</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/index.css">
+</head>
+<body class="pagina-tienda">
+  <header class="barra">
+    <a class="logo" href="/">
+      <span>Tienda de videojuegos</span>
+    </a>
+
+    <div class="acciones">
+      <button id="logoutBtn" class="btn ghost small" type="button">Cerrar sesión</button>
+    </div>
+  </header>
+
+  <main class="contenido">
+    
+    <div id="message" class="message hidden"></div>
+
+    <section>
+      <div class="titulo">
+        <div>
+          <span class="etiqueta dark">Explorar</span>
+          <h2>Juegos destacados</h2>
+        </div>
+      </div>
+
+      <div id="productGrid" class="productos"></div>
+    </section>
+  </main>
+
+  <button id="cartFab" class="boton-carrito" type="button" aria-label="Abrir carrito">
+    <span>🛒</span>
+    <span id="cartCount" class="contador">0</span>
+  </button>
+
+  <aside id="cartDrawer" class="carrito" aria-hidden="true">
+    <div class="cabeza-carrito">
+      <div>
+        <span class="etiqueta dark">Tu compra</span>
+        <h2>Carrito</h2>
+      </div>
+      <button id="closeCartBtn" class="cerrar" type="button" aria-label="Cerrar">×</button>
+    </div>
+
+    <div id="cartItems" class="articulos"></div>
+
+    <div class="resumen">
+      <div class="total">
+        <span>Total</span>
+        <strong id="cartTotal">$0.00</strong>
+      </div>
+
+      <button id="checkoutBtn" class="btn primary" type="button">Finalizar compra</button>
+      <button id="clearCartBtn" class="btn danger-outline" type="button">Vaciar carrito</button>
+    </div>
+  </aside>
+
+  <div id="drawerBackdrop" class="fondo-carrito"></div>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>

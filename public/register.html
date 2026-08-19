@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/register.css">
+</head>
+<body class="pagina-cuenta">
+  <main class="caja-cuenta">
+    <section class="bienvenida">
+      <
+      <h1>Registrate</h1>
+      <p>Crea una cuenta para guardar tu carrito y descubrir juegos.</p>
+    </section>
+
+    <section class="formulario">
+      <div>
+        <span class="etiqueta dark">Cuenta</span>
+        <h2>Crear una cuenta</h2>
+      </div>
+
+      <div id="message" class="message hidden"></div>
+
+      <form id="registerForm" class="stack">
+        <label>
+          Nombre
+          <input id="nombre" type="text" required maxlength="100" placeholder="Tu nombre">
+        </label>
+
+        <label>
+          Correo
+          <input id="email" type="email" required placeholder="correo@ejemplo.com">
+        </label>
+
+        <label>
+          Contraseña
+          <input id="password" type="password" minlength="6" required placeholder="Mínimo 6 caracteres">
+        </label>
+
+        <button class="btn primary" type="submit">Registrarme</button>
+      </form>
+
+      <p class="pie">
+        ¿Ya tienes cuenta?
+        <a href="/login.html">Volver al login</a>
+      </p>
+    </section>
+  </main>
+
+  <script src="/js/register.js"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/login.css">
+</head>
+<body class="pagina-cuenta">
+  <main class="caja-cuenta">
+    <section class="bienvenida">
+      <span class="etiqueta">Bienvenido de nuevo</span>
+      <h1>Tienda de videojuegos</h1>
+      <p>Explora el catálogo.</p>
+
+    </section>
+
+    <section class="formulario">
+      <div>
+        <span class="etiqueta dark">Cuenta</span>
+        <h2>Iniciar sesión</h2>
+        <p class="muted">Usa tu correo o continúa con Google.</p>
+      </div>
+
+      <div id="message" class="message hidden"></div>
+
+      <form id="loginForm" class="stack">
+        <label>
+          Correo
+          <input id="email" type="email" autocomplete="email" required placeholder="correo@ejemplo.com">
+        </label>
+
+        <label>
+          Contraseña
+          <input id="password" type="password" autocomplete="current-password" required minlength="6">
+        </label>
+
+        <button class="btn primary" type="submit">Iniciar sesión</button>
+      </form>
+
+      <div class="separador"><span>o</span></div>
+
+      <a class="btn google" href="/auth/google">
+        <span class="google-dot">G</span>
+        Continuar con Google
+      </a>
+
+      <section id="tokenPanel" class="token hidden">
+        <div class="titulo-token">
+          <div>
+            <strong>Token obtenido</strong>
+            <p id="tokenType" class="muted tiny"></p>
+          </div>
+          <button id="copyTokenBtn" class="boton-copiar" type="button">Copiar</button>
+        </div>
+
+        <textarea id="tokenOutput" readonly rows="4"></textarea>
+        <button id="enterCartBtn" class="btn primary" type="button">Entrar al carrito</button>
+      </section>
+
+      <details class="token-manual">
+        <summary>Ya tengo un token</summary>
+
+        <form id="manualTokenForm" class="stack compact">
+          <label>
+            Pega JWT o token OAuth
+            <textarea id="manualToken" rows="4" required placeholder="Pega aquí tu token"></textarea>
+          </label>
+          <button class="btn secondary" type="submit">Validar token y entrar</button>
+        </form>
+      </details>
+
+      <p class="pie">
+        ¿No tienes cuenta local?
+        <a href="/register.html">Crear cuenta</a>
+      </p>
+    </section>
+  </main>
+
+  <script src="/js/login.js"></script>
+</body>
+</html>
